@@ -1,22 +1,26 @@
 {
   "version": 2,
-  "public": true,
   "name": "silentbridge-web",
-  "rewrites": [
-    {
-      "source": "/(status|video_feed)",
-      "destination": "http://localhost:5000/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": { "distDir": "dist" }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/status",
+      "destination": "http://localhost:5000/status"
+    },
+    {
+      "source": "/video_feed",
+      "destination": "http://localhost:5000/video_feed"
+    },
+    { "handle": "filesystem" },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
