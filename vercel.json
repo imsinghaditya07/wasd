@@ -1,6 +1,13 @@
 {
   "version": 2,
   "name": "silentbridge-web",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
   "rewrites": [
     {
       "source": "/(status|video_feed)",
