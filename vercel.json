@@ -3,19 +3,15 @@
   "name": "silentbridge-web",
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": { "distDir": "frontend/dist" }
     }
   ],
   "rewrites": [
     {
-      "source": "/status",
-      "destination": "http://localhost:5000/status"
-    },
-    {
-      "source": "/video_feed",
-      "destination": "http://localhost:5000/video_feed"
+      "source": "/(status|video_feed)",
+      "destination": "http://localhost:5000/$1"
     },
     { "handle": "filesystem" },
     {
